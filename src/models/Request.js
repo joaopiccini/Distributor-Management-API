@@ -1,34 +1,42 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const requestSchema = mongoose.Schema({
     description: {
         type: String,
-        require: true
+        require: true,
     },
-    products: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'product',
-        required: true
-    }],
+    products: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'product',
+            required: true,
+        },
+    ],
     price: {
         type: Number,
-        required: true
+        required: true,
     },
     author: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user',
         required: true,
-        default:"System"
+        default: 'System',
+    },
+    customer: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'customer',
+        required: true,
     },
     createdAt: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     },
     updatedAt: {
         type: Date,
-        default: Date.now
-    }
-})
+        default: Date.now,
+    },
+});
 
-const Request = mongoose.model('request', requestSchema, 'requests')
+const Request = mongoose.model('request', requestSchema, 'requests');
 
-module.exports = Request
+module.exports = Request;

@@ -1,8 +1,8 @@
 const bcrypt = require('bcryptjs');
-const User = require('../models/User');
+const User = require('../../models/User');
 
-class UsersService {
-    static async createUser(body) {
+class UsersServiceAPI {
+    static async createUserAPI(body) {
         try {
             const user = await User.findOne({ email: body.email });
             if (user) {
@@ -16,15 +16,16 @@ class UsersService {
         }
     }
 
-    static async loginUser(body) {
+    static async createToken(body) {
         try {
             const user = await User.findOne({ email: body.email });
             if (user) {
+                const emailIsCorrect = user.email === body.email;
                 const passwordIsCorrect = await bcrypt.compare(
                     body.password,
                     user.password
                 );
-                if (body.email === user.email && passwordIsCorrect) {
+                if (emailIsCorrect && passwordIsCorrect) {
                     return user;
                 }
             }
@@ -35,4 +36,4 @@ class UsersService {
     }
 }
 
-module.exports = UsersService;
+module.exports = UsersServiceAPI;

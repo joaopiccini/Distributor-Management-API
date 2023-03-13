@@ -1,9 +1,10 @@
+/* eslint-disable prettier/prettier */
 const express = require('express')
-const ProductsController = require('../controllers/ProductsController')
+const ProductsControllerAPI = require('../api/controllers/ProductsController')
 
 const router = express.Router();
 
 router
-    .post('/product/register', ProductsController.registerProduct)
+    .post('/product/register', ProductsControllerAPI.registerProduct)
 
 module.exports = router;

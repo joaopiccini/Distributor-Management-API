@@ -1,9 +1,10 @@
+/* eslint-disable prettier/prettier */
 const express = require('express')
-const RequestsController = require('../controllers/RequestsController')
+const RequestsControllerAPI = require('../api/controllers/RequestsController')
 
 const router = express.Router();
 
 router
-    .post('/request/do', RequestsController.doRequest)
+    .post('/request/do', RequestsControllerAPI.doRequest)
 
 module.exports = router;
