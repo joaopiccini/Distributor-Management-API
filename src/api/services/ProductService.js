@@ -3,7 +3,7 @@ const Product = require('../../models/Product');
 class ProductServiceAPI {
     static async registerProduct(body) {
         try {
-            const productExist = await Product.findOne({ name: body.name });
+            const productExist = await Product.find({ name: body.name });
             if (productExist) {
                 return 'The product is already registered';
             }
@@ -17,7 +17,8 @@ class ProductServiceAPI {
     static async findAllProducts() {
         try {
             const products = await Product.find({});
-            if (products.length == 0) {
+            const productNotFound = products.length == 0;
+            if (productNotFound) {
                 return "There aren't registered products.";
             }
             return products;
@@ -29,7 +30,8 @@ class ProductServiceAPI {
     static async findProductsByType(type) {
         try {
             const products = await Product.find({ type });
-            if (products.length == 0) {
+            const productNotFound = products.length == 0;
+            if (productNotFound) {
                 return "There aren't registered products with this type.";
             }
             return products;
@@ -41,7 +43,8 @@ class ProductServiceAPI {
     static async findProductById(id) {
         try {
             const product = await Product.find({ _id: id });
-            if (product.length == 0) {
+            const productNotFound = products.length == 0;
+            if (productNotFound) {
                 return "There aren't registered products with this ID.";
             }
             return product;
@@ -54,7 +57,8 @@ class ProductServiceAPI {
         try {
             await Product.updateOne({ _id: id }, { $set: body });
             const productUpdated = await Product.find({ _id: id });
-            if (productUpdated.length == 0) {
+            const productNotFound = productUpdated.length == 0;
+            if (productNotFound) {
                 return "There aren't registered products with this ID.";
             }
             return productUpdated;
@@ -63,7 +67,18 @@ class ProductServiceAPI {
         }
     }
 
-    static async deleteProductById() {}
+    static async deleteProductById(id) {
+        try {
+            const productExist = await Product.find({ _id: id });
+            if (productExist) {
+                await Product.deleteOne({ _id: id });
+                return productExist;
+            }
+            return "There aren't registered products with this ID.";
+        } catch (err) {
+            return err;
+        }
+    }
 }
 
 module.exports = ProductServiceAPI;

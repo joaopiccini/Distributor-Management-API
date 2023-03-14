@@ -6,7 +6,9 @@ class ProductsControllerAPI {
     static async registerProduct(req, res) {
         try {
             const response = await ProductServiceAPI.registerProduct(req.body);
-            if (typeof response === 'object' && response !== null) {
+            const responseIsObject =
+                typeof response === 'object' && response != null;
+            if (responseIsObject) {
                 return res.json({
                     message: 'Product created in database',
                     product: {
@@ -61,7 +63,9 @@ class ProductsControllerAPI {
                 req.params.id,
                 req.body
             );
-            if (typeof response === 'object' && response !== null) {
+            const responseIsObject =
+                typeof response === 'object' && response != null;
+            if (responseIsObject) {
                 return res.json({
                     updated: true,
                     message: 'Product updated in database',
@@ -80,7 +84,27 @@ class ProductsControllerAPI {
         }
     }
 
-    static async deleteProductById() {}
+    static async deleteProductById(req, res) {
+        try {
+            const response = await ProductServiceAPI.deleteProductById(
+                req.params.id
+            );
+            return res.json({
+                deleted: true,
+                message: 'Product deleted of database',
+                product: {
+                    id: response._id,
+                    name: response.name,
+                    type: response.type,
+                    price: response.price,
+                    quantity: response.quantity,
+                    author: response.author,
+                },
+            });
+        } catch (err) {
+            return err;
+        }
+    }
 }
 
 module.exports = ProductsControllerAPI;

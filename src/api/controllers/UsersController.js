@@ -6,7 +6,9 @@ class UsersControllerAPI {
     static async createUserAPI(req, res) {
         try {
             const response = await UsersServiceAPI.createUserAPI(req.body);
-            if (typeof response === 'object' && response !== null) {
+            const responseIsObject =
+                typeof response === 'object' && response != null;
+            if (responseIsObject) {
                 const idUser = JSON.stringify(response._id).replace(
                     'new ObjectId("")',
                     ''
@@ -31,7 +33,9 @@ class UsersControllerAPI {
     static async createToken(req, res) {
         try {
             const response = await UsersServiceAPI.createToken(req.body);
-            if (typeof response === 'object' && response != null) {
+            const responseIsObject =
+                typeof response === 'object' && response != null;
+            if (responseIsObject) {
                 const idUser = JSON.stringify(response._id).replace(
                     'new ObjectId("")',
                     ''
