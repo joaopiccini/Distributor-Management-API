@@ -1,7 +1,18 @@
 const Customer = require('../models/Customer');
 
 class CustomersService {
-    static async createCustomer() {}
+    static async createCustomer(body) {
+        try {
+            const customerExists = await Customer.findOne({ name: body.name });
+            if (customerExists) {
+                return 'The customer is already registered';
+            }
+            const customer = await Customer.create(body);
+            return customer;
+        } catch (err) {
+            return err;
+        }
+    }
 
     static async findAllCustomers() {}
 

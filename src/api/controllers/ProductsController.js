@@ -1,4 +1,3 @@
-const jwt = require('jsonwebtoken');
 const ProductServiceAPI = require('../services/ProductService');
 require('dotenv/config');
 
@@ -6,21 +5,15 @@ class ProductsControllerAPI {
     static async registerProduct(req, res) {
         try {
             const response = await ProductServiceAPI.registerProduct(req.body);
-            const responseIsObject =
-                typeof response === 'object' && response != null;
-            if (responseIsObject) {
-                return res.json({
-                    message: 'Product created in database',
-                    product: {
-                        name: response.name,
-                        type: response.type,
-                        price: response.price,
-                        quantity: response.quantity,
-                        author: response.author,
-                    },
-                });
+            const responseIsError = typeof response === 'string';
+            if (responseIsError) {
+                return res.json(response);
             }
-            return res.json(response);
+            return res.json({
+                created: true,
+                message: 'Product created in database',
+                product: response,
+            });
         } catch (err) {
             return res.json(err);
         }
@@ -31,7 +24,7 @@ class ProductsControllerAPI {
             const response = await ProductServiceAPI.findAllProducts();
             return res.json(response);
         } catch (err) {
-            return err;
+            return res.json(err);
         }
     }
 
@@ -42,7 +35,7 @@ class ProductsControllerAPI {
             );
             return res.json(response);
         } catch (err) {
-            return err;
+            return res.json(err);
         }
     }
 
@@ -53,7 +46,7 @@ class ProductsControllerAPI {
             );
             return res.json(response);
         } catch (err) {
-            return err;
+            return res.json(err);
         }
     }
 
@@ -63,24 +56,16 @@ class ProductsControllerAPI {
                 req.params.id,
                 req.body
             );
-            const responseIsObject =
-                typeof response === 'object' && response != null;
-            if (responseIsObject) {
-                return res.json({
-                    updated: true,
-                    message: 'Product updated in database',
-                    product: {
-                        name: response.name,
-                        type: response.type,
-                        price: response.price,
-                        quantity: response.quantity,
-                        author: response.author,
-                    },
-                });
+            const responseIsError = typeof response === 'string';
+            if (responseIsError) {
+                return res.json(response);
             }
-            return res.json(response);
+            return res.json({
+                updated: true,
+                message: 'Product updated in database',
+            });
         } catch (err) {
-            return err;
+            return res.json(err);
         }
     }
 
@@ -89,20 +74,17 @@ class ProductsControllerAPI {
             const response = await ProductServiceAPI.deleteProductById(
                 req.params.id
             );
+            const responseIsError = typeof response === 'string';
+            if (responseIsError) {
+                return res.json(response);
+            }
             return res.json({
                 deleted: true,
                 message: 'Product deleted of database',
-                product: {
-                    id: response._id,
-                    name: response.name,
-                    type: response.type,
-                    price: response.price,
-                    quantity: response.quantity,
-                    author: response.author,
-                },
+                product: response,
             });
         } catch (err) {
-            return err;
+            return res.json(err);
         }
     }
 }

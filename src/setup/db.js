@@ -4,9 +4,7 @@ const port = 27017;
 
 const connect = () => {
     mongoose
-        .connect(
-            `mongodb+srv://distributor:distributor@distributor.mynm022.mongodb.net/?retryWrites=true&w=majority`
-        )
+        .connect(`mongodb://localhost:27017/cadastro`)
         .then(() => {
             console.log(`Database connected on port: ${port}`);
         })
