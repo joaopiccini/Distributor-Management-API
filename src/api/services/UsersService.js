@@ -4,8 +4,8 @@ const User = require('../../models/User');
 class UsersServiceAPI {
     static async createUserAPI(body) {
         try {
-            const user = await User.findOne({ email: body.email });
-            if (user) {
+            const userExists = await User.findOne({ email: body.email });
+            if (userExists) {
                 return 'E-mail already registered.';
             }
             body.password = await bcrypt.hash(body.password, 10);
@@ -18,15 +18,15 @@ class UsersServiceAPI {
 
     static async createToken(body) {
         try {
-            const user = await User.findOne({ email: body.email });
-            if (user) {
-                const emailIsCorrect = user.email === body.email;
+            const userExists = await User.findOne({ email: body.email });
+            if (userExists) {
+                const emailIsCorrect = userExists.email === body.email;
                 const passwordIsCorrect = await bcrypt.compare(
                     body.password,
                     user.password
                 );
                 if (emailIsCorrect && passwordIsCorrect) {
-                    return user;
+                    return userExists;
                 }
             }
             return 'User data is incorrect or not valid.';
