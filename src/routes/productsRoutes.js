@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 const express = require('express');
 const ProductsControllerAPI = require('../api/controllers/ProductsController');
-const Validate = require('./auth/Validate');
+const Validate = require('../auth/Validate');
 
 const router = express.Router();
 

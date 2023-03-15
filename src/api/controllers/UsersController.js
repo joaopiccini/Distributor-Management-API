@@ -9,10 +9,8 @@ class UsersControllerAPI {
             const responseIsObject =
                 typeof response === 'object' && response != null;
             if (responseIsObject) {
-                const idUser = JSON.stringify(response._id).replace(
-                    'new ObjectId("")',
-                    ''
-                );
+                const regex = 'new ObjectId("")';
+                const idUser = JSON.stringify(response._id).replace(regex, '');
                 const token = jwt.sign({ idUser }, process.env.SECRET, {
                     expiresIn: '365d',
                 });
