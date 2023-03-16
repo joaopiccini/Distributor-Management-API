@@ -5,13 +5,24 @@ class CustomersControllerAPI {
     static async findAllCustomer(req, res) {
         try {
             const customers = await CustomersServiceAPI.findAllCustomer();
-            const customerNotFound = customers.length === 0;
-            if (customerNotFound) {
+            const customersQuantity = customers.length;
+            if (customersQuantity === 0) {
                 return "There aren't registered customers.";
             }
-            return res.json(customers);
+            const customersToSent = [];
+            for (let i = 0; i < customersQuantity; i++) {
+                const customer = {
+                    id: customer[i]._id,
+                    name: customer[i].name,
+                    document: customer[i].doc,
+                    phone: customer[i].phone,
+                };
+                customersToSent.push(customer);
+            }
+            return res.status(200).json(customersToSent);
         } catch (err) {
-            return res.json(err);
+            console.log(err);
+            return res.status(500).json('Internal Server Error.');
         }
     }
 
@@ -22,9 +33,17 @@ class CustomersControllerAPI {
             if (!customer) {
                 return "There isn't registered customer with this document.";
             }
-            return res.json(customer);
+            return res.status(200).json({
+                customer: {
+                    id: customer._id,
+                    name: customer.name,
+                    document: customer.doc,
+                    phone: customer.phone,
+                },
+            });
         } catch (err) {
-            return res.json(err);
+            console.log(err);
+            return res.status(500).json('Internal Server Error.');
         }
     }
 
@@ -35,9 +54,17 @@ class CustomersControllerAPI {
             if (!customer) {
                 return "There isn't registered customer with this ID.";
             }
-            return res.json(customer);
+            return res.status(200).json({
+                customer: {
+                    id: customer._id,
+                    name: customer.name,
+                    document: customer.doc,
+                    phone: customer.phone,
+                },
+            });
         } catch (err) {
-            return res.json(err);
+            console.log(err);
+            return res.status(500).json('Internal Server Error.');
         }
     }
 }

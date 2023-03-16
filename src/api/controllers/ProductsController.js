@@ -4,87 +4,99 @@ require('dotenv/config');
 class ProductsControllerAPI {
     static async registerProduct(req, res) {
         try {
-            const response = await ProductServiceAPI.registerProduct(req.body);
-            const responseIsError = typeof response === 'string';
-            if (responseIsError) {
-                return res.json(response);
+            const productData = req.body;
+            const { name } = req.body;
+            const productFound = await ProductServiceAPI.findProductByName(
+                name
+            );
+            if (productFound) {
+                return 'The product is already registered.';
             }
-            return res.json({
-                created: true,
-                message: 'Product created in database',
-                product: response,
+            await ProductServiceAPI.registerProduct(productData);
+            return res.status(201).json({
+                message: 'Product registered in database.',
             });
         } catch (err) {
-            return res.json(err);
+            console.log(err);
+            return res.status(500).json('Internal Server Error.');
         }
     }
 
     static async findAllProducts(req, res) {
         try {
-            const response = await ProductServiceAPI.findAllProducts();
-            return res.json(response);
+            const products = await ProductServiceAPI.findAllProducts();
+            const productNotFound = products.length === 0;
+            if (productNotFound) {
+                return "There aren't registered products.";
+            }
+            return res.status(200).json(products);
         } catch (err) {
-            return res.json(err);
+            console.log(err);
+            return res.status(500).json('Internal Server Error.');
         }
     }
 
     static async findProductsByType(req, res) {
         try {
-            const response = await ProductServiceAPI.findProductsByType(
-                req.params.type
-            );
-            return res.json(response);
+            const { type } = req.params;
+            const products = await ProductServiceAPI.findProductsByType(type);
+            const productNotFound = products.length === 0;
+            if (productNotFound) {
+                return "There aren't registered products with this type.";
+            }
+            return res.status(200).json(products);
         } catch (err) {
-            return res.json(err);
+            console.log(err);
+            return res.status(500).json('Internal Server Error.');
         }
     }
 
     static async findProductById(req, res) {
         try {
-            const response = await ProductServiceAPI.findProductById(
-                req.params.id
-            );
-            return res.json(response);
+            const { id } = req.params;
+            const productFound = await ProductServiceAPI.findProductById(id);
+            if (!productFound) {
+                return "There isn't registered product with this ID.";
+            }
+            return res.status(200).json(productFound);
         } catch (err) {
-            return res.json(err);
+            console.log(err);
+            return res.status(500).json('Internal Server Error.');
         }
     }
 
     static async updateProductById(req, res) {
         try {
-            const response = await ProductServiceAPI.updateProductById(
-                req.params.id,
-                req.body
-            );
-            const responseIsError = typeof response === 'string';
-            if (responseIsError) {
-                return res.json(response);
+            const { id } = req.params;
+            const product = req.body;
+            const productFound = await ProductServiceAPI.findProductById(id);
+            if (!productFound) {
+                return "There isn't registered product with this ID.";
             }
-            return res.json({
-                updated: true,
-                message: 'Product updated in database',
+            await ProductServiceAPI.updateProductById(id, product);
+            return res.status(200).json({
+                message: 'Product updated in database.',
             });
         } catch (err) {
-            return res.json(err);
+            console.log(err);
+            return res.status(500).json('Internal Server Error.');
         }
     }
 
     static async deleteProductById(req, res) {
         try {
-            const response = await ProductServiceAPI.deleteProductById(
-                req.params.id
-            );
-            const responseIsError = typeof response === 'string';
-            if (responseIsError) {
-                return res.json(response);
+            const { id } = req.params;
+            const productFound = await ProductServiceAPI.findProductById(id);
+            if (!productFound) {
+                return "There isn't registered product with this ID.";
             }
-            return res.json({
-                deleted: true,
-                message: 'Product deleted of database',
-                product: response,
+            await ProductServiceAPI.deleteProductById(id);
+            return res.status(200).json({
+                message: 'Product deleted of database.',
             });
         } catch (err) {
-            return res.json(err);
+            console.log(err);
+            return res.status(500).json('Internal Server Error.');
         }
     }
 }

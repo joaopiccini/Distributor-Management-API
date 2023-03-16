@@ -1,14 +1,9 @@
 const Product = require('../../models/Product');
 
 class ProductServiceAPI {
-    static async registerProduct(body) {
+    static async registerProduct(productData) {
         try {
-            const productExists = await Product.findOne({ name: body.name });
-            if (productExists) {
-                return 'The product is already registered';
-            }
-            const product = await Product.create(body);
-            return product;
+            return await Product.create(productData);
         } catch (err) {
             return err;
         }
@@ -16,12 +11,7 @@ class ProductServiceAPI {
 
     static async findAllProducts() {
         try {
-            const products = await Product.find({});
-            const productNotFound = products.length === 0;
-            if (productNotFound) {
-                return "There aren't registered products.";
-            }
-            return products;
+            return await Product.find({});
         } catch (err) {
             return err;
         }
@@ -29,24 +19,26 @@ class ProductServiceAPI {
 
     static async findProductsByType(type) {
         try {
-            const products = await Product.find({ type });
-            const productNotFound = products.length === 0;
-            if (productNotFound) {
-                return "There aren't registered products with this type.";
-            }
-            return products;
+            return await Product.find({ type });
         } catch (err) {
+            return err;
+        }
+    }
+
+    static async findProductByName(name) {
+        try {
+            return await Product.findOne({ name });
+        } catch (err) {
+            if (err.name === 'CastError') {
+                return "There isn't registered product with this ID.";
+            }
             return err;
         }
     }
 
     static async findProductById(id) {
         try {
-            const productExists = await Product.findOne({ _id: id });
-            if (!productExists) {
-                return "There isn't registered product with this ID.";
-            }
-            return productExists;
+            return await Product.findOne({ _id: id });
         } catch (err) {
             if (err.name === 'CastError') {
                 return "There isn't registered product with this ID.";
@@ -57,12 +49,7 @@ class ProductServiceAPI {
 
     static async updateProductById(id, body) {
         try {
-            const productExists = await Product.findOne({ _id: id });
-            if (!productExists) {
-                return "There isn't registered product with this ID.";
-            }
-            await Product.updateOne({ _id: id }, { $set: body });
-            return productExists;
+            return await Product.updateOne({ _id: id }, { $set: body });
         } catch (err) {
             if (err.name === 'CastError') {
                 return "There isn't registered product with this ID.";
@@ -73,11 +60,7 @@ class ProductServiceAPI {
 
     static async deleteProductById(id) {
         try {
-            const productExist = await Product.findOneAndDelete({ _id: id });
-            if (!productExist) {
-                return "There isn't registered product with this ID.";
-            }
-            return productExist;
+            return await Product.deleteOne({ _id: id });
         } catch (err) {
             if (err.name === 'CastError') {
                 return "There isn't registered product with this ID.";
