@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const UsersService = require('../services/UsersService');
 const Authentication = require('../auth/Authentication');
 require('dotenv/config');
@@ -50,7 +51,7 @@ class UsersController {
                 if (userAutenticate) {
                     const expiresIn = '1h';
                     const regex = 'new ObjectId("")';
-                    const userId = JSON.stringify(response._id).replace(
+                    const userId = JSON.stringify(userExists._id).replace(
                         regex,
                         ''
                     );
@@ -59,7 +60,6 @@ class UsersController {
                     });
                     return res.json({
                         message: 'Token created',
-                        auth: true,
                         token,
                         expiresIn,
                     });

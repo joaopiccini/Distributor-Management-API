@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+const RequestServiceAPI = require('../services/RequestService');
 require('dotenv/config');
 
 class RequestsControllerAPI {

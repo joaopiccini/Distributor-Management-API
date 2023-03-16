@@ -4,7 +4,7 @@ require('dotenv/config');
 class CustomersControllerAPI {
     static async findAllCustomer(req, res) {
         try {
-            const customers = await CustomersServiceAPI.findAllCustomer();
+            const customers = await CustomersServiceAPI.findAll();
             const customersQuantity = customers.length;
             if (customersQuantity === 0) {
                 return "There aren't registered customers.";

@@ -47,9 +47,9 @@ class ProductServiceAPI {
         }
     }
 
-    static async updateProductById(id, body) {
+    static async updateProductById(id, newData) {
         try {
-            return await Product.updateOne({ _id: id }, { $set: body });
+            return await Product.updateOne({ _id: id }, { $set: newData });
         } catch (err) {
             if (err.name === 'CastError') {
                 return "There isn't registered product with this ID.";
