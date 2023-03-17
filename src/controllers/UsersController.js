@@ -10,10 +10,7 @@ class UsersController {
             const userData = req.body;
             const { email, password } = req.body;
             const userDataIsValid =
-                userData.name &&
-                userData.email &&
-                userData.password &&
-                userData.status;
+                userData.name && userData.email && userData.password;
             if (userDataIsValid) {
                 const userExists = await UsersService.findUserByEmail(email);
                 if (userExists) {
@@ -29,6 +26,59 @@ class UsersController {
                         status: user.status,
                     },
                 });
+            }
+            return res.status(400).json('User data is incorrect or not valid.');
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json('Internal Server Error.');
+        }
+    }
+
+    static async findAllUsers(req, res) {
+        try {
+            const users = await UsersService.findAllUsers();
+            const usersNotFound = users.length === 0;
+            if (usersNotFound) {
+                return "There aren't registered products.";
+            }
+            return res.status(200).json({ users });
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json('Internal Server Error.');
+        }
+    }
+
+    static async inactivateUser(req, res) {
+        try {
+            const { email } = req.params;
+            const userExists = await UsersService.findUserByEmail(email);
+            if (userExists && userExists.status === 'A') {
+                await UsersService.updateUserByEmail(email, { status: 'I' });
+                return res
+                    .status(200)
+                    .json({ message: 'Successfully inactive user' });
+            }
+            return res.status(400).json('This User is already inactive.');
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json('Internal Server Error.');
+        }
+    }
+
+    static async activateUser(req, res) {
+        try {
+            const { email } = req.params;
+            const userExists = await UsersService.findUserByEmail(email);
+            if (userExists) {
+                if (userExists.status === 'I') {
+                    await UsersService.updateUserByEmail(email, {
+                        status: 'A',
+                    });
+                    return res
+                        .status(200)
+                        .json({ message: 'Successfully active user' });
+                }
+                return res.status(200).json('This User is already active.');
             }
             return res.status(400).json('User data is incorrect or not valid.');
         } catch (err) {

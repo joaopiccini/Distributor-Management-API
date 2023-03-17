@@ -42,9 +42,13 @@ class CustomersService {
         }
     }
 
-    static async updateCustomer() {}
-
-    static async inativeCustomer() {}
+    static async updateCustomerByDoc(doc, newCustomerData) {
+        try {
+            return await Customer.updateOne({ doc }, { $set: newCustomerData });
+        } catch (err) {
+            return err;
+        }
+    }
 }
 
 module.exports = CustomersService;

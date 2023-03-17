@@ -14,10 +14,13 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true,
+        min: 8,
+        max: 30,
     },
     status: {
         type: String,
         required: true,
+        default: 'A',
     },
     createdAt: {
         type: Date,
