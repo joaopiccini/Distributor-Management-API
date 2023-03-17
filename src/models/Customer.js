@@ -10,6 +10,10 @@ const customerSchema = mongoose.Schema({
         unique: true,
         required: true,
     },
+    status: {
+        type: String,
+        required: true,
+    },
     email: {
         type: String,
         unique: true,

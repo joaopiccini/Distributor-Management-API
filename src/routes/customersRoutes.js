@@ -1,19 +1,19 @@
 /* eslint-disable prettier/prettier */
 const express = require('express');
 const CustomersController = require("../controllers/CustomersController");
-const CustomersControllerAPI = require('../api/controllers/CustomersController');
 const Authentication = require('../auth/Authentication');
 
 const router = express.Router();
 
 router
-    .get('/customer', CustomersController.findAllCustomers)
+    .get('/customer', CustomersController.findAllCustomer)
     .get('/customer/:id', CustomersController.findCustomerById)
+    .get('/customer/doc/:doc', CustomersController.findCustomerByDoc)
     .post('/customer/create', CustomersController.createCustomer)
-    .put('/customer/create', CustomersController.updateCustomer)
-    .delete('/customer/create', CustomersController.inativeCustomer)
-    .get('/api/customer', Authentication.validateJWT, CustomersControllerAPI.findAllCustomer)
-    .get('/api/customer/:id', Authentication.validateJWT, CustomersControllerAPI.findCustomerById)
-    .get('/api/customer/doc/:doc', Authentication.validateJWT, CustomersControllerAPI.findCustomerByDoc)
+    .put('/customer', CustomersController.updateCustomer)
+    .delete('/customer', CustomersController.inativeCustomer)
+    .get('/api/customer', Authentication.validateJWT, CustomersController.findAllCustomerAPI)
+    .get('/api/customer/:id', Authentication.validateJWT, CustomersController.findCustomerByIdAPI)
+    .get('/api/customer/doc/:doc', Authentication.validateJWT, CustomersController.findCustomerByDocAPI)
 
 module.exports = router;
