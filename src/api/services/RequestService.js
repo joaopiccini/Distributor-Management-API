@@ -1,6 +1,6 @@
 const Request = require('../../models/Product');
 
-class RequestServiceAPI {
+class RequestService {
     static async createRequest(requestData) {
         try {
             return await Request.create(requestData);
@@ -25,9 +25,20 @@ class RequestServiceAPI {
         }
     }
 
+    static async findRequestByCod(cod) {
+        try {
+            return await Request.findOne({ cod });
+        } catch (err) {
+            if (err.name === 'CastError') {
+                return "There isn't registered request with this ID.";
+            }
+            return err;
+        }
+    }
+
     static async findRequestById(id) {
         try {
-            return await Request.findOne({ _id: id });
+            return await Request.findOne({ id });
         } catch (err) {
             if (err.name === 'CastError') {
                 return "There isn't registered request with this ID.";
@@ -38,7 +49,7 @@ class RequestServiceAPI {
 
     static async updateRequestById(id, newData) {
         try {
-            return await Request.updateOne({ _id: id }, { $set: newData });
+            return await Request.updateOne({ id }, { $set: newData });
         } catch (err) {
             if (err.name === 'CastError') {
                 return "There isn't registered request with this ID.";
@@ -59,4 +70,4 @@ class RequestServiceAPI {
     }
 }
 
-module.exports = RequestServiceAPI;
+module.exports = RequestService;

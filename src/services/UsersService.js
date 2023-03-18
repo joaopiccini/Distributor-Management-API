@@ -28,9 +28,9 @@ class UsersService {
         }
     }
 
-    static async updateUserByEmail(email, newUserData) {
+    static async updateUserByEmail(email, newData) {
         try {
-            return await User.updateOne({ email }, { $set: newUserData });
+            return await User.updateOne({ email }, { $set: newData });
         } catch (err) {
             return err;
         }

@@ -4,9 +4,7 @@ const port = 27017;
 
 const connect = () => {
     mongoose
-        .connect(
-            `mongodb+srv://distributor:distributor@distributor.mynm022.mongodb.net/?retryWrites=true&w=majority`
-        )
+        .connect(`mongodb+srv://distributor:distributor@distributor.mynm022.mongodb.net/?retryWrites=true&w=majority`)
         .then(() => {
             console.log(`Database connected on port: ${port}`);
         })
@@ -15,6 +13,4 @@ const connect = () => {
         });
 };
 
-module.exports = {
-    connect,
-};
+module.exports = { connect };

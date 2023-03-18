@@ -42,9 +42,9 @@ class CustomersService {
         }
     }
 
-    static async updateCustomerByDoc(doc, newCustomerData) {
+    static async updateCustomerByDoc(doc, newData) {
         try {
-            return await Customer.updateOne({ doc }, { $set: newCustomerData });
+            return await Customer.updateOne({ doc }, { $set: newData });
         } catch (err) {
             return err;
         }

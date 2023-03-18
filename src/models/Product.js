@@ -4,33 +4,33 @@ const productSchema = mongoose.Schema({
     name: {
         type: String,
         unique: true,
-        require: true,
+        require: true
     },
     type: {
         type: String,
-        required: true,
+        required: true
     },
     price: {
         type: Number,
-        required: true,
+        required: true
     },
     quantity: {
         type: Number,
-        default: 0,
+        default: 0
     },
     author: {
         type: String,
         required: true,
-        default: 'System',
+        default: 'System'
     },
     createdAt: {
         type: Date,
-        default: Date.now,
+        default: Date.now
     },
     updatedAt: {
         type: Date,
-        default: Date.now,
-    },
+        default: Date.now
+    }
 });
 
 const Product = mongoose.model('product', productSchema, 'products');

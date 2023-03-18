@@ -1,20 +1,24 @@
-const RequestServiceAPI = require('../services/RequestService');
+const RequestService = require('../services/RequestService');
 require('dotenv/config');
 
-class RequestsControllerAPI {
+class RequestsController {
     static async doRequest() {}
 
     static async findAllRequests() {}
 
     static async findRequestByAuthor() {}
 
+    static async findRequestByCod() {}
+
     static async findRequestById() {}
 
-    static async updateRequest() {}
+    static async updateRequestById() {}
 
-    static async completeRequest() {}
+    static async completeRequestById() {}
 
-    static async cancelRequest() {}
+    static async cancelRequestById() {}
+
+    static async deleteRequestById() {}
 }
 
-module.exports = RequestsControllerAPI;
+module.exports = RequestsController;

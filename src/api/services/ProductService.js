@@ -1,6 +1,6 @@
 const Product = require('../../models/Product');
 
-class ProductServiceAPI {
+class ProductService {
     static async registerProduct(productData) {
         try {
             return await Product.create(productData);
@@ -70,4 +70,4 @@ class ProductServiceAPI {
     }
 }
 
-module.exports = ProductServiceAPI;
+module.exports = ProductService;

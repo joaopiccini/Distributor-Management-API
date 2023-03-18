@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-const express = require('express')
-const UsersController = require("../controllers/UsersController")
+const express = require('express');
+const UsersController = require("../controllers/UsersController");
 
 const router = express.Router();
 
