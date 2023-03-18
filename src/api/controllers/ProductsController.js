@@ -1,17 +1,26 @@
-const ProductService = require('../services/ProductService');
+const ProductsService = require('../services/ProductsService');
 require('dotenv/config');
 
 class ProductsController {
     static async registerProduct(req, res) {
         try {
             const productData = req.body;
-            const { name } = req.body;
-            const productFound = await ProductService.findProductByName(name);
-            if (productFound) {
+            const dataLimit = Object.keys(productData).length === 4;
+            const productDataIsValid =
+                productData.name && productData.type && productData.price && productData.quantity && dataLimit;
+            const productFound = await ProductsService.findProductByName(productData.name);
+            if (productDataIsValid) {
+                if (!productFound) {
+                    const priceAndQuantityIsValid = productData.price > 0 && productData.quantity >= 0;
+                    if (priceAndQuantityIsValid) {
+                        await ProductsService.registerProduct(productData);
+                        return res.status(201).json({ message: 'Product registered in database.' });
+                    }
+                    return res.status(400).json('Product price or quantity is incorrect or not valid.');
+                }
                 return res.status(200).json('The product is already registered.');
             }
-            await ProductService.registerProduct(productData);
-            return res.status(201).json({ message: 'Product registered in database.' });
+            return res.status(400).json('Product data is incorrect or not valid.');
         } catch (err) {
             console.log(err);
             return res.status(500).json('Internal Server Error.');
@@ -20,7 +29,7 @@ class ProductsController {
 
     static async findAllProducts(req, res) {
         try {
-            const products = await ProductService.findAllProducts();
+            const products = await ProductsService.findAllProducts();
             const productNotFound = products.length === 0;
             if (productNotFound) {
                 return res.status(200).json("There aren't registered products.");
@@ -35,7 +44,7 @@ class ProductsController {
     static async findProductsByType(req, res) {
         try {
             const { type } = req.params;
-            const products = await ProductService.findProductsByType(type);
+            const products = await ProductsService.findProductsByType(type);
             const productNotFound = products.length === 0;
             if (productNotFound) {
                 return res.status(200).json("There aren't registered products with this type.");
@@ -50,7 +59,7 @@ class ProductsController {
     static async findProductById(req, res) {
         try {
             const { id } = req.params;
-            const productFound = await ProductService.findProductById(id);
+            const productFound = await ProductsService.findProductById(id);
             if (!productFound) {
                 return res.status(200).json("There isn't registered product with this ID.");
             }
@@ -64,12 +73,12 @@ class ProductsController {
     static async updateProductById(req, res) {
         try {
             const { id } = req.params;
-            const product = req.body;
-            const productFound = await ProductService.findProductById(id);
+            const newProductData = req.body;
+            const productFound = await ProductsService.findProductById(id);
             if (!productFound) {
                 return res.status(200).json("There isn't registered product with this ID.");
             }
-            await ProductService.updateProductById(id, product);
+            await ProductsService.updateProductById(id, newProductData);
             return res.status(200).json({ message: 'Product updated in database.' });
         } catch (err) {
             console.log(err);
@@ -80,11 +89,11 @@ class ProductsController {
     static async deleteProductById(req, res) {
         try {
             const { id } = req.params;
-            const productFound = await ProductService.findProductById(id);
+            const productFound = await ProductsService.findProductById(id);
             if (!productFound) {
                 return res.status(200).json("There isn't registered product with this ID.");
             }
-            await ProductService.deleteProductById(id);
+            await ProductsService.deleteProductById(id);
             return res.status(200).json({ message: 'Product deleted of database.' });
         } catch (err) {
             console.log(err);

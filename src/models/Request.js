@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const requestSchema = mongoose.Schema({
     cod: {
-        type: Number,
+        type: String,
         unique: true,
         require: true
     },
@@ -14,6 +14,12 @@ const requestSchema = mongoose.Schema({
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'product',
+            required: true
+        }
+    ],
+    quantity: [
+        {
+            type: Number,
             required: true
         }
     ],
@@ -31,6 +37,11 @@ const requestSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'customer',
         required: true
+    },
+    status: {
+        type: String,
+        required: true,
+        default: 'released'
     },
     createdAt: {
         type: Date,

@@ -6,6 +6,7 @@ const router = express.Router();
 
 router
     .get('/user',UsersController.findAllUsers)
+    .get('/user/:id',UsersController.findUserById)
     .post('/register',UsersController.createUser)
     .post('/login',UsersController.loginUser)
     .post('/api/token', UsersController.createToken)

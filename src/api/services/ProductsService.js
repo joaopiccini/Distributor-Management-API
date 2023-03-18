@@ -47,6 +47,14 @@ class ProductService {
         }
     }
 
+    static async findManyProductsByIds(ids) {
+        try {
+            return await Product.find({ _id: { $in: ids } });
+        } catch (err) {
+            return err;
+        }
+    }
+
     static async updateProductById(id, newData) {
         try {
             return await Product.updateOne({ _id: id }, { $set: newData });

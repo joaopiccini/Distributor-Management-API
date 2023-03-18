@@ -22,7 +22,18 @@ class UsersService {
             return await User.findOne({ email });
         } catch (err) {
             if (err.name === 'CastError') {
-                return "There isn't registered product with this Email.";
+                return "There isn't registered user with this Email.";
+            }
+            return err;
+        }
+    }
+
+    static async findUserById(id) {
+        try {
+            return await User.findOne({ _id: id });
+        } catch (err) {
+            if (err.name === 'CastError') {
+                return "There isn't registered user with this ID.";
             }
             return err;
         }

@@ -10,6 +10,7 @@ class Authentication {
             if (!tokenVerification) {
                 return res.status(401).json('Token informed in the requst is not valid.');
             }
+            req.user = tokenVerification.userId;
             return next();
         } catch {
             return res.status(401).json('Token informed in the requst is not valid.');

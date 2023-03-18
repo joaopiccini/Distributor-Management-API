@@ -38,7 +38,22 @@ class UsersController {
             const users = await UsersService.findAllUsers();
             const usersNotFound = users.length === 0;
             if (usersNotFound) {
-                return "There aren't registered products.";
+                return "There aren't registered user.";
+            }
+            return res.status(200).json({ users });
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json('Internal Server Error.');
+        }
+    }
+
+    static async findUserById(req, res) {
+        try {
+            const { id } = req.params;
+            const users = await UsersService.findUserById(id);
+            const usersNotFound = users.length === 0;
+            if (usersNotFound) {
+                return "There isn't registered user with this ID.";
             }
             return res.status(200).json({ users });
         } catch (err) {
