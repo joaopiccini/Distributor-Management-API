@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 const express = require('express');
-const RequestsController = require('../api/controllers/RequestsController');
+const RequestsController = require('../controllers/RequestsController');
 const Authentication = require('../auth/Authentication');
 
 

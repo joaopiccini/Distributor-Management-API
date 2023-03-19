@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
-
-const port = 27017;
+require('dotenv/config');
 
 const connect = () => {
     mongoose
-        .connect(`mongodb+srv://distributor:distributor@distributor.mynm022.mongodb.net/?retryWrites=true&w=majority`)
+        .connect('mongodb://localhost:27017/distributor')
         .then(() => {
-            console.log(`Database connected on port: ${port}`);
+            console.log(`Database connected on port: ${process.env.BD_PORT}`);
         })
         .catch((err) => {
             console.log(`Error on database connect: ${err}`);

@@ -3,13 +3,14 @@ const bodyParser = require('body-parser');
 const usersRoutes = require('./usersRoutes');
 const productsRoutes = require('./productsRoutes');
 const requestsRoutes = require('./requestsRoutes');
-const CustomersController = require('./customersRoutes');
+const customersRoutes = require('./customersRoutes');
+const apiRoutes = require('./apiRoutes')
 
 module.exports = app => {
 
     app.get('/', (req, res) => {
         if(req.session){
-            res.render('index');
+            res.render('home');
         } else {
             res.render('login');
         }
@@ -20,7 +21,8 @@ module.exports = app => {
         usersRoutes,
         productsRoutes,
         requestsRoutes,
-        CustomersController
+        customersRoutes,
+        apiRoutes
         );
 
 }

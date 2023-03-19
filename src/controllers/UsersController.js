@@ -38,7 +38,7 @@ class UsersController {
             const users = await UsersService.findAllUsers();
             const usersNotFound = users.length === 0;
             if (usersNotFound) {
-                return "There aren't registered user.";
+                return res.status(200).json("There aren't registered user.");
             }
             return res.status(200).json({ users });
         } catch (err) {
@@ -50,12 +50,11 @@ class UsersController {
     static async findUserById(req, res) {
         try {
             const { id } = req.params;
-            const users = await UsersService.findUserById(id);
-            const usersNotFound = users.length === 0;
-            if (usersNotFound) {
-                return "There isn't registered user with this ID.";
+            const userExists = await UsersService.findUserById(id);
+            if (!userExists) {
+                return res.status(200).json("There isn't registered user with this ID.");
             }
-            return res.status(200).json({ users });
+            return res.status(200).json({ userExists });
         } catch (err) {
             console.log(err);
             return res.status(500).json('Internal Server Error.');
@@ -109,37 +108,6 @@ class UsersController {
                     const userAutenticate = await Authentication.AutenticateUser(userData, userExists, res);
                     if (userAutenticate) {
                         return res.status(200).json(userExists);
-                    }
-                    return res.status(400).json('User data is incorrect or not valid.');
-                }
-                return res.status(400).json('User data is incorrect or not valid.');
-            }
-            return res.status(400).json('User data is incorrect or not valid.');
-        } catch (err) {
-            console.log(err);
-            return res.status(500).json('Internal Server Error.');
-        }
-    }
-
-    static async createToken(req, res) {
-        try {
-            const userData = req.body;
-            const dataLimit = Object.keys(userData).length === 2;
-            const userDataIsValid = userData.email && userData.password && dataLimit;
-            if (userDataIsValid) {
-                const userExists = await UsersService.findUserByEmail(userData.email);
-                if (userExists && userExists.status === 'A') {
-                    const userAutenticate = await Authentication.AutenticateUser(userData, userExists);
-                    if (userAutenticate) {
-                        const expiresIn = '365d';
-                        const regex = 'new ObjectId("")';
-                        const userId = JSON.stringify(userExists._id).replace(regex, '');
-                        const token = jwt.sign({ userId }, process.env.SECRET, { expiresIn });
-                        return res.json({
-                            message: 'Token created',
-                            token,
-                            expiresIn
-                        });
                     }
                     return res.status(400).json('User data is incorrect or not valid.');
                 }

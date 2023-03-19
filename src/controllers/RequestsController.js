@@ -1,7 +1,7 @@
 const shortId = require('shortid');
 const RequestsService = require('../services/RequestsService');
-const UsersService = require('../../services/UsersService');
-const CostumersService = require('../../services/CustomersService');
+const UsersService = require('../services/UsersService');
+const CostumersService = require('../services/CustomersService');
 const ProductsService = require('../services/ProductsService');
 require('dotenv/config');
 
@@ -44,7 +44,7 @@ class RequestsController {
                                 requestData.price = totalValueOfProducts;
                                 requestData.cod = shortId.generate();
                                 requestData.author = await UsersService.findUserById(idUser);
-                                const request = await RequestsService.createRequest(requestData);
+                                const request = await RequestsService.doRequest(requestData);
                                 return res.status(201).json({ message: 'Request registered in database.', request });
                             }
                             return res.status(200).json("Don't have enough products.");

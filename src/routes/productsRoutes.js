@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 const express = require('express');
-const ProductsController = require('../api/controllers/ProductsController');
+const ProductsController = require('../controllers/ProductsController');
 const Authentication = require('../auth/Authentication');
 
 const router = express.Router();

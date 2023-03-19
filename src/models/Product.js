@@ -16,18 +16,15 @@ const productSchema = mongoose.Schema({
     },
     quantity: {
         type: Number,
+        required: true,
         default: 0
     },
-    author: {
+    provider: {
         type: String,
         required: true,
         default: 'System'
     },
     createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    updatedAt: {
         type: Date,
         default: Date.now
     }

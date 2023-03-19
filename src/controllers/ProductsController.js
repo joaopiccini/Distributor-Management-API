@@ -5,9 +5,14 @@ class ProductsController {
     static async registerProduct(req, res) {
         try {
             const productData = req.body;
-            const dataLimit = Object.keys(productData).length === 4;
+            const dataLimit = Object.keys(productData).length === 5;
             const productDataIsValid =
-                productData.name && productData.type && productData.price && productData.quantity && dataLimit;
+                productData.name &&
+                productData.type &&
+                productData.price &&
+                productData.quantity &&
+                productData.provider &&
+                dataLimit;
             const productFound = await ProductsService.findProductByName(productData.name);
             if (productDataIsValid) {
                 if (!productFound) {

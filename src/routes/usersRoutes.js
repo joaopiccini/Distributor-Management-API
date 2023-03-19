@@ -9,7 +9,6 @@ router
     .get('/user/:id',UsersController.findUserById)
     .post('/register',UsersController.createUser)
     .post('/login',UsersController.loginUser)
-    .post('/api/token', UsersController.createToken)
     .put('/user/inactive/:email',UsersController.inactivateUser)
     .put('/user/active/:email',UsersController.activateUser)
 

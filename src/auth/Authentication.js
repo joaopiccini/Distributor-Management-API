@@ -6,7 +6,7 @@ class Authentication {
     static async validateJWT(req, res, next) {
         try {
             const token = req.headers.authorization.split(' ')[1];
-            const tokenVerification = await jwt.verify(token, process.env.SECRET);
+            const tokenVerification = await jwt.verify(token, process.env.JWT_SECRET);
             if (!tokenVerification) {
                 return res.status(401).json('Token informed in the requst is not valid.');
             }

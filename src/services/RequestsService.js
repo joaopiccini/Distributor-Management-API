@@ -1,7 +1,7 @@
-const Request = require('../../models/Request');
+const Request = require('../models/Request');
 
 class RequestService {
-    static async createRequest(requestData) {
+    static async doRequest(requestData) {
         try {
             return await Request.create(requestData);
         } catch (err) {
