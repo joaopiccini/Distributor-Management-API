@@ -81,10 +81,9 @@ class UsersController {
                 requests[i].price = totalValueOfProducts;
                 requests[i].customer = customerId;
                 requests[i].author = req.user.replace(regex, '');
-
+                console.log(requests[i].author);
                 requests[i].status = 'released';
                 requests[i].cod = shortId.generate();
-                console.log(requests[i]);
                 await RequestsService.doRequest(requests[i]);
             }
             return res.status(200).json({ message: 'System started' });

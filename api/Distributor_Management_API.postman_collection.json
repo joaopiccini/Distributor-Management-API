@@ -1,0 +1,3251 @@
+{
+	"info": {
+		"_postman_id": "15bd56a1-f587-46a6-83af-ef5b7d72a1fa",
+		"name": "Distributor Management API",
+		"description": "## Welcome to Distributor Management documentation\n\nThis is a simple API of the Distributor Management application.  \nBelow you will find all our endpoints available so far.  \n  \nAll endpoints require authentication except the endpoinst:\n\n- Generate a token\n- Login\n- Register\n    \n\n#### All requests use the following variables:\n\nThe variables below are just examples, for the real use of the API it will be necessary to use variables according to your environment.\n\n- `{{url}} = http://mydomain.com`\n- `{{token}} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQdsfrhtbgfbsrt5`\n    \n\n#### Contats for support:\n\n- Complete project: [Github](https://github.com/joaopiccini/Distributor-Product-Management)\n- E-mail: [joaopedropiccini@gmail.com](mailto:joaopedropiccini@gmail.com)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26438823"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Generate a token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"api@teste.com\",\r\n    \"password\": \"123\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"token"
+							]
+						},
+						"description": "This request generates the authorization token to perform the other requests."
+					},
+					"response": [
+						{
+							"name": "Generate a token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"claudio@distributor.com\",\r\n    \"password\": \"senhasecreta\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"token"
+									]
+								}
+							},
+							"status": "unknown",
+							"code": 220,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "249"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f9-pw5ZFuaXo/eeuCWru4/x1VRYrt4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 13:03:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Token created with expiration time of: 365d\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJcIjY0MTYyMWUxOGZkZmY1YTVlY2ZiMjE4NlwiIiwiaWF0IjoxNjc5MjMxMDIyLCJleHAiOjE3MTA3NjcwMjJ9.xaTbvWnoRS7cl98hhG3GH-cWD4nugCnXz8Wc17qJMb0\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"claudio@distributor.com\",\r\n    \"password\": \"senhasecreta\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "This request authorizes a user to enter in the distributor."
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"claudio@distributor.com\",\r\n    \"password\": \"senhasecreta\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d-1LTw8AIG6S5RqJY45HTNzcT3Mxg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 17:42:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User Claudio has been connected\"\n}"
+						}
+					]
+				}
+			],
+			"description": "In the authentication folder there are the endpoints to generate the authorization token and autenticate the users."
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Find all users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						},
+						"description": "This request finds all customers registered at the distributor."
+					},
+					"response": [
+						{
+							"name": "Find all users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "405"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"195-nBjMtLcjFFpfayh7mNvrdTmOwKM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 17:59:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"users\": [\n        {\n            \"_id\": \"6417154cc02a34b22484938a\",\n            \"name\": \"Joao\",\n            \"email\": \"joao@distributor.com\",\n            \"status\": \"A\",\n            \"createdAt\": \"2023-03-19T13:59:40.761Z\"\n        },\n        {\n            \"_id\": \"6417154cc02a34b22484938c\",\n            \"name\": \"Ana\",\n            \"email\": \"ana@distributor.com\",\n            \"status\": \"A\",\n            \"createdAt\": \"2023-03-19T13:59:40.771Z\"\n        },\n        {\n            \"_id\": \"6417154cc02a34b22484938e\",\n            \"name\": \"Jose\",\n            \"email\": \"jose@distributor.com\",\n            \"status\": \"A\",\n            \"createdAt\": \"2023-03-19T13:59:40.774Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Find a user by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/user/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6417154cc02a34b22484938c"
+								}
+							]
+						},
+						"description": "This request finds all customers registered at the distributor."
+					},
+					"response": [
+						{
+							"name": "Find a user by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/user/:id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6417154cc02a34b22484938c"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "138"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8a-AbjkLpm2M5g72D1ef7BioNYZZvM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 17:45:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"_id\": \"6417154cc02a34b22484938c\",\n        \"name\": \"Ana\",\n        \"email\": \"ana@distributor.com\",\n        \"status\": \"A\",\n        \"createdAt\": \"2023-03-19T13:59:40.771Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create a user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Claudio\",\r\n    \"email\": \"claudio@distributor.com\",\r\n    \"password\": \"senhasecreta\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "This request creates a new user at the distributor."
+					},
+					"response": [
+						{
+							"name": "Create a user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Claudio\",\r\n    \"email\": \"claudio@distributor.com\",\r\n    \"password\": \"senhasecreta\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"23-fitPUZPKufV1xTmKaFdUrYH3BnI\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 17:40:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User has been created\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Inactive a user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/user/inactive/:email",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"inactive",
+								":email"
+							],
+							"variable": [
+								{
+									"key": "email",
+									"value": "joao@distributor.com"
+								}
+							]
+						},
+						"description": "This request updates the status of an existing user to inactive at the distributor."
+					},
+					"response": [
+						{
+							"name": "Inactive a user",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/user/inactive/:email",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"inactive",
+										":email"
+									],
+									"variable": [
+										{
+											"key": "email",
+											"value": "joao@distributor.com"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-FhXcx82JbsQPzvVPmLymw/FDskU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 17:47:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully inactive user\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Active a user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/user/active/:email",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"active",
+								":email"
+							],
+							"variable": [
+								{
+									"key": "email",
+									"value": "joao@distributor.com"
+								}
+							]
+						},
+						"description": "This request updates the status of an existing user to active at the distributor."
+					},
+					"response": [
+						{
+							"name": "Active a user",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/user/active/:email",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"active",
+										":email"
+									],
+									"variable": [
+										{
+											"key": "email",
+											"value": "joao@distributor.com"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "38"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"26-0i63Y9zYaFnog5sRqIuIxQXwsww\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 17:48:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully active user\"\n}"
+						}
+					]
+				}
+			],
+			"description": "In the users folder there are endpoints to search, register and update the users registered in the distributor."
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Find all customers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/customer",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"customer"
+							]
+						},
+						"description": "This request finds all customers registered at the distributor."
+					},
+					"response": [
+						{
+							"name": "Find all customers",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/customer",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "619"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"26b-AAEsJ2vMAWW2pZnmDLQ1SkD01qU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 15:42:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"customers\": [\n        {\n            \"_id\": \"6417175cd9902c1c8cc5fe50\",\n            \"name\": \"Juan Jorge Santos\",\n            \"doc\": \"86101079902\",\n            \"status\": \"A\",\n            \"email\": \"juan-santos70@agnet.com.br\",\n            \"phone\": \"9338932103\",\n            \"createdAt\": \"2023-03-19T14:08:28.331Z\"\n        },\n        {\n            \"_id\": \"6417175cd9902c1c8cc5fe52\",\n            \"name\": \"Milena Rafaela da Cruz\",\n            \"doc\": \"88930626408\",\n            \"status\": \"A\",\n            \"email\": \"milena_dacruz@termaqui.com.br\",\n            \"phone\": \"6337850951\",\n            \"createdAt\": \"2023-03-19T14:08:28.334Z\"\n        },\n        {\n            \"_id\": \"6417175cd9902c1c8cc5fe60\",\n            \"name\": \"César Marcos da Mata\",\n            \"doc\": \"71369417764\",\n            \"status\": \"A\",\n            \"email\": \"cesar_marcos_damata@galpaoestofados.com.br\",\n            \"phone\": \"9528323034\",\n            \"createdAt\": \"2023-03-19T14:08:28.348Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Find a customer by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/customer/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6417175cd9902c1c8cc5fe52"
+								}
+							]
+						},
+						"description": "This request finds a customer registered at the distributor."
+					},
+					"response": [
+						{
+							"name": "Find a customer by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/customer/:id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6417175cd9902c1c8cc5fe52"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "212"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d4-e0oI2l0bMjRB5OwW7hi7LM3S1i4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 15:43:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"customer\": {\n        \"_id\": \"6417175cd9902c1c8cc5fe52\",\n        \"name\": \"Milena Rafaela da Cruz\",\n        \"doc\": \"88930626408\",\n        \"status\": \"A\",\n        \"email\": \"milena_dacruz@termaqui.com.br\",\n        \"phone\": \"6337850951\",\n        \"createdAt\": \"2023-03-19T14:08:28.334Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Find a customer by Doc",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/customer/doc/:doc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"doc",
+								":doc"
+							],
+							"variable": [
+								{
+									"key": "doc",
+									"value": "71369417764"
+								}
+							]
+						},
+						"description": "This request finds a customer registered at the distributor."
+					},
+					"response": [
+						{
+							"name": "Find a customer by Doc",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/customer/doc/:doc",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"doc",
+										":doc"
+									],
+									"variable": [
+										{
+											"key": "doc",
+											"value": "71369417764"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "224"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e0-FV5zua7kMsaruvc9E92gsZfST44\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 15:43:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"customer\": {\n        \"_id\": \"6417175cd9902c1c8cc5fe60\",\n        \"name\": \"César Marcos da Mata\",\n        \"doc\": \"71369417764\",\n        \"status\": \"A\",\n        \"email\": \"cesar_marcos_damata@galpaoestofados.com.br\",\n        \"phone\": \"9528323034\",\n        \"createdAt\": \"2023-03-19T14:08:28.348Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Register a customer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Claudio\",\r\n    \"doc\": \"19204468492\",\r\n    \"email\": \"claudio70@gmail.com\",\r\n    \"phone\": \"9338932103\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/customer/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"register"
+							]
+						},
+						"description": "This request registers a new customer at the distributor."
+					},
+					"response": [
+						{
+							"name": "Register a customer",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Claudio\",\r\n    \"doc\": \"19204468492\",\r\n    \"email\": \"claudio70@gmail.com\",\r\n    \"phone\": \"9338932103\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/customer/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-XnOQlOiukrErR/+39YqfvtS8qXc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 17:51:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The customer has been created\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a customer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\": \"49993283745\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/customer/:doc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								":doc"
+							],
+							"variable": [
+								{
+									"key": "doc",
+									"value": "19204468492"
+								}
+							]
+						},
+						"description": "This request updates an existing customer at the distributor."
+					},
+					"response": [
+						{
+							"name": "Update a customer",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phone\": \"49993283745\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/customer/:doc",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										":doc"
+									],
+									"variable": [
+										{
+											"key": "doc",
+											"value": "19204468492"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"27-X9zpVT9d/yumOWDbykfsGMMLcuU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 17:54:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Customer has been updated\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Inactive a customer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/customer/inactive/:doc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"inactive",
+								":doc"
+							],
+							"variable": [
+								{
+									"key": "doc",
+									"value": "86101079902"
+								}
+							]
+						},
+						"description": "This request updates the status of an existing customer to inactive at the distributor."
+					},
+					"response": [
+						{
+							"name": "Inactive a customer",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/customer/inactive/:doc",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"inactive",
+										":doc"
+									],
+									"variable": [
+										{
+											"key": "doc",
+											"value": "86101079902"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-DecCieJ2LHjTwXDTNG2p9TEe1fQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 17:56:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully inactive customer\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Active a customer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/customer/active/:doc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"active",
+								":doc"
+							],
+							"variable": [
+								{
+									"key": "doc",
+									"value": "86101079902"
+								}
+							]
+						},
+						"description": "This request updates the status of an existing customer to active at the distributor."
+					},
+					"response": [
+						{
+							"name": "Active a customer",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/customer/active/:doc",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"customer",
+										"active",
+										":doc"
+									],
+									"variable": [
+										{
+											"key": "doc",
+											"value": "86101079902"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-K1SaqFaT3w9Yi+MGIhtzThOLE/E\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 17:58:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successfully active customer\"\n}"
+						}
+					]
+				}
+			],
+			"description": "In the customers folder there are endpoints to search, register and update the customers registered in the distributor."
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Find all products",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/product",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product"
+							]
+						},
+						"description": "StartFragment\n\nThis request finds all products registered at the distributor."
+					},
+					"response": [
+						{
+							"name": "Find all products",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/product",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"product"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "506"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1fa-PLQujMb2z4xsa2z+HfPZIWYg8JY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 15:43:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"products\": [\n        {\n            \"_id\": \"6417175cd9902c1c8cc5fe64\",\n            \"name\": \"Maça\",\n            \"type\": \"Frutas\",\n            \"price\": 7.89,\n            \"quantity\": 7,\n            \"provider\": \"Fruteira Chapecó\",\n            \"createdAt\": \"2023-03-19T14:08:28.352Z\"\n        },\n        {\n            \"_id\": \"6417175cd9902c1c8cc5fe72\",\n            \"name\": \"Laranja\",\n            \"type\": \"Frutas\",\n            \"price\": 14.69,\n            \"quantity\": 17,\n            \"provider\": \"Atacadao das Frutas\",\n            \"createdAt\": \"2023-03-19T14:08:28.369Z\"\n        },\n        {\n            \"_id\": \"6417175cd9902c1c8cc5fe74\",\n            \"name\": \"Chuchu\",\n            \"type\": \"Vegetais\",\n            \"price\": 3.19,\n            \"quantity\": 24,\n            \"provider\": \"Frutas do Zé\",\n            \"createdAt\": \"2023-03-19T14:08:28.371Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Find a product by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/product/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6417175cd9902c1c8cc5fe72"
+								}
+							]
+						},
+						"description": "This request finds a product registered at the distributor."
+					},
+					"response": [
+						{
+							"name": "Find a product by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/product/:id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"product",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "6417175cd9902c1c8cc5fe72"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "179"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b3-XVd7nRMHDtb3OO6S6OddkimKQtM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 15:44:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"product\": {\n        \"_id\": \"6417175cd9902c1c8cc5fe72\",\n        \"name\": \"Laranja\",\n        \"type\": \"Frutas\",\n        \"price\": 14.69,\n        \"quantity\": 17,\n        \"provider\": \"Atacadao das Frutas\",\n        \"createdAt\": \"2023-03-19T14:08:28.369Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Find products by Type",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/product/type/:type",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"type",
+								":type"
+							],
+							"variable": [
+								{
+									"key": "type",
+									"value": "Frutas"
+								}
+							]
+						},
+						"description": "This request finds all products of the specified type."
+					},
+					"response": [
+						{
+							"name": "Find products by Type",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/product/type/:type",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"product",
+										"type",
+										":type"
+									],
+									"variable": [
+										{
+											"key": "type",
+											"value": "Frutas"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "344"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"158-g/THY9BuPQbmNMKZcngwhOwsB4s\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 15:44:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"products\": [\n        {\n            \"_id\": \"6417175cd9902c1c8cc5fe64\",\n            \"name\": \"Maça\",\n            \"type\": \"Frutas\",\n            \"price\": 7.89,\n            \"quantity\": 7,\n            \"provider\": \"Fruteira Chapecó\",\n            \"createdAt\": \"2023-03-19T14:08:28.352Z\"\n        },\n        {\n            \"_id\": \"6417175cd9902c1c8cc5fe72\",\n            \"name\": \"Laranja\",\n            \"type\": \"Frutas\",\n            \"price\": 14.69,\n            \"quantity\": 17,\n            \"provider\": \"Atacadao das Frutas\",\n            \"createdAt\": \"2023-03-19T14:08:28.369Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Register a product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"Abacaxi\",\r\n\t\"type\": \"Frutas\",\r\n\t\"price\": 4.69,\r\n\t\"quantity\": 12,\r\n\t\"provider\": \"Fruteira Chapecó\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/product/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"register"
+							]
+						},
+						"description": "This request registers a new product at the distributor."
+					},
+					"response": [
+						{
+							"name": "Register a product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"name\": \"Abacaxi\",\r\n\t\"type\": \"Frutas\",\r\n\t\"price\": 4.69,\r\n\t\"quantity\": 12,\r\n\t\"provider\": \"Fruteira Chapecó\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/product/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"product",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-TAGCIOpnZscVyenQlo4m0LwQ5h4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 15:29:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The product has been registered.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"Limão\",\r\n\t\"price\": 6.35\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/product/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "64172a6d4d36ec9b4c730523"
+								}
+							]
+						},
+						"description": "This request updates an existing product at the distributor."
+					},
+					"response": [
+						{
+							"name": "Update a product",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"name\": \"Limão\",\r\n\t\"price\": 6.35\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/product/:id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"product",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "64172a6d4d36ec9b4c730523"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-kRcPBR38RwEM0pqfxN7RoVmWbTs\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 15:30:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The product has been updated.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/product/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"product",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "64172a6d4d36ec9b4c730523"
+								}
+							]
+						},
+						"description": "This request deletes an existing product at the distributor."
+					},
+					"response": [
+						{
+							"name": "Delete a product",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/product/:id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"product",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "64172a6d4d36ec9b4c730523"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-mco2H49S7hNlxsvdQbd4nzsyHvE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 15:30:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The product has been deleted.\"\n}"
+						}
+					]
+				}
+			],
+			"description": "In the products folder there are endpoints to search, register, update and delete the products registered in the distributor."
+		},
+		{
+			"name": "Requests",
+			"item": [
+				{
+					"name": "Find all requests",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/request",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"request"
+							]
+						},
+						"description": "This request finds all requests registered at the distributor."
+					},
+					"response": [
+						{
+							"name": "Find all requests",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"request"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1953"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7a1-V2w0WJX4I9KmdHIChu8024l4kqg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 14:22:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"requests\": [\n        {\n            \"_id\": \"641717dd3087298c80b8529f\",\n            \"cod\": \"TCHdBBPqA\",\n            \"description\": \"Compras na feira\",\n            \"products\": [\n                {\n                    \"_id\": \"6417175cd9902c1c8cc5fe62\",\n                    \"name\": \"Penca de Babana\",\n                    \"type\": \"Frutas\",\n                    \"price\": 3.23,\n                    \"quantity\": 10,\n                    \"provider\": \"Fruteira Chapecó\",\n                    \"createdAt\": \"2023-03-19T14:08:28.350Z\"\n                },\n                {\n                    \"_id\": \"6417175cd9902c1c8cc5fe70\",\n                    \"name\": \"Pepino\",\n                    \"type\": \"Vegetal\",\n                    \"price\": 0.49,\n                    \"quantity\": 69,\n                    \"provider\": \"Frutas do Zé\",\n                    \"createdAt\": \"2023-03-19T14:08:28.362Z\"\n                }\n            ],\n            \"quantity\": [\n                40,\n                21\n            ],\n            \"price\": 294.89,\n            \"author\": {\n                \"_id\": \"641717113a42c78499b5b711\",\n                \"name\": \"API Teste\",\n                \"email\": \"api@teste.com\",\n                \"status\": \"A\",\n                \"createdAt\": \"2023-03-19T14:07:13.928Z\"\n            },\n            \"customer\": {\n                \"_id\": \"6417175cd9902c1c8cc5fe56\",\n                \"name\": \"Geraldo Gustavo Freitas\",\n                \"doc\": \"14712416106\",\n                \"status\": \"A\",\n                \"email\": \"geraldo_gustavo_freitas@lagencemodelos.com.br\",\n                \"phone\": \"6736223977\",\n                \"createdAt\": \"2023-03-19T14:08:28.338Z\"\n            },\n            \"status\": \"released\",\n            \"createdAt\": \"2023-03-19T14:10:37.756Z\"\n        },\n        {\n            \"_id\": \"641717dd3087298c80b852a3\",\n            \"cod\": \"LLO5druiyl\",\n            \"description\": \"Reposição do supermercado\",\n            \"products\": [\n                {\n                    \"_id\": \"6417175cd9902c1c8cc5fe64\",\n                    \"name\": \"Caixa de Maças\",\n                    \"type\": \"Frutas\",\n                    \"price\": 7.89,\n                    \"quantity\": 7,\n                    \"provider\": \"Fruteira Chapecó\",\n                    \"createdAt\": \"2023-03-19T14:08:28.352Z\"\n                },\n                {\n                    \"_id\": \"6417175cd9902c1c8cc5fe6e\",\n                    \"name\": \"Abóbora\",\n                    \"type\": \"Legumes\",\n                    \"price\": 9.99,\n                    \"quantity\": 3,\n                    \"provider\": \"Fruteira Chapecó\",\n                    \"createdAt\": \"2023-03-19T14:08:28.360Z\"\n                },\n                {\n                    \"_id\": \"6417175cd9902c1c8cc5fe70\",\n                    \"name\": \"Pepino\",\n                    \"type\": \"Vegetal\",\n                    \"price\": 0.49,\n                    \"quantity\": 69,\n                    \"provider\": \"Frutas do Zé\",\n                    \"createdAt\": \"2023-03-19T14:08:28.362Z\"\n                }\n            ],\n            \"quantity\": [\n                8,\n                45,\n                13\n            ],\n            \"price\": 438.74,\n            \"author\": {\n                \"_id\": \"641717113a42c78499b5b711\",\n                \"name\": \"API Teste\",\n                \"email\": \"api@teste.com\",\n                \"status\": \"A\",\n                \"createdAt\": \"2023-03-19T14:07:13.928Z\"\n            },\n            \"customer\": {\n                \"_id\": \"6417175cd9902c1c8cc5fe5a\",\n                \"name\": \"Isis Nicole Rocha\",\n                \"doc\": \"60772392161\",\n                \"status\": \"A\",\n                \"email\": \"isis_rocha@outlook.com.br\",\n                \"phone\": \"1129972625\",\n                \"createdAt\": \"2023-03-19T14:08:28.343Z\"\n            },\n            \"status\": \"released\",\n            \"createdAt\": \"2023-03-19T14:10:37.765Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Find a request by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/request/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"request",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "641717dd3087298c80b8529f"
+								}
+							]
+						},
+						"description": "This request finds a request registered at the distributor."
+					},
+					"response": [
+						{
+							"name": "Find a request by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/request/:id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"request",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "641717dd3087298c80b852a3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1057"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"421-JL0+88LttR3Gm+WMKJ2D8ndWCaE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 14:24:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"request\": {\n        \"_id\": \"641717dd3087298c80b852a3\",\n        \"cod\": \"LLO5druiyl\",\n        \"description\": \"Reposição do supermercado\",\n        \"products\": [\n            {\n                \"_id\": \"6417175cd9902c1c8cc5fe64\",\n                \"name\": \"Caixa de Maças\",\n                \"type\": \"Frutas\",\n                \"price\": 7.89,\n                \"quantity\": 7,\n                \"provider\": \"Fruteira Chapecó\",\n                \"createdAt\": \"2023-03-19T14:08:28.352Z\"\n            },\n            {\n                \"_id\": \"6417175cd9902c1c8cc5fe6e\",\n                \"name\": \"Abóbora\",\n                \"type\": \"Legumes\",\n                \"price\": 9.99,\n                \"quantity\": 3,\n                \"provider\": \"Fruteira Chapecó\",\n                \"createdAt\": \"2023-03-19T14:08:28.360Z\"\n            },\n            {\n                \"_id\": \"6417175cd9902c1c8cc5fe70\",\n                \"name\": \"Pepino\",\n                \"type\": \"Vegetal\",\n                \"price\": 0.49,\n                \"quantity\": 69,\n                \"provider\": \"Frutas do Zé\",\n                \"createdAt\": \"2023-03-19T14:08:28.362Z\"\n            }\n        ],\n        \"quantity\": [\n            8,\n            45,\n            13\n        ],\n        \"price\": 438.74,\n        \"author\": {\n            \"_id\": \"641717113a42c78499b5b711\",\n            \"name\": \"API Teste\",\n            \"email\": \"api@teste.com\",\n            \"status\": \"A\",\n            \"createdAt\": \"2023-03-19T14:07:13.928Z\"\n        },\n        \"customer\": {\n            \"_id\": \"6417175cd9902c1c8cc5fe5a\",\n            \"name\": \"Isis Nicole Rocha\",\n            \"doc\": \"60772392161\",\n            \"status\": \"A\",\n            \"email\": \"isis_rocha@outlook.com.br\",\n            \"phone\": \"1129972625\",\n            \"createdAt\": \"2023-03-19T14:08:28.343Z\"\n        },\n        \"status\": \"released\",\n        \"createdAt\": \"2023-03-19T14:10:37.765Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Find a request by Cod",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/request/cod/:cod",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"request",
+								"cod",
+								":cod"
+							],
+							"variable": [
+								{
+									"key": "cod",
+									"value": "LLO5druiyl"
+								}
+							]
+						},
+						"description": "This request finds a request registered at the distributor."
+					},
+					"response": [
+						{
+							"name": "Find a request by Cod",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/request/cod/:cod",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"request",
+										"cod",
+										":cod"
+									],
+									"variable": [
+										{
+											"key": "cod",
+											"value": "LLO5druiyl"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1057"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"421-JL0+88LttR3Gm+WMKJ2D8ndWCaE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 14:25:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"request\": {\n        \"_id\": \"641717dd3087298c80b852a3\",\n        \"cod\": \"LLO5druiyl\",\n        \"description\": \"Reposição do supermercado\",\n        \"products\": [\n            {\n                \"_id\": \"6417175cd9902c1c8cc5fe64\",\n                \"name\": \"Caixa de Maças\",\n                \"type\": \"Frutas\",\n                \"price\": 7.89,\n                \"quantity\": 7,\n                \"provider\": \"Fruteira Chapecó\",\n                \"createdAt\": \"2023-03-19T14:08:28.352Z\"\n            },\n            {\n                \"_id\": \"6417175cd9902c1c8cc5fe6e\",\n                \"name\": \"Abóbora\",\n                \"type\": \"Legumes\",\n                \"price\": 9.99,\n                \"quantity\": 3,\n                \"provider\": \"Fruteira Chapecó\",\n                \"createdAt\": \"2023-03-19T14:08:28.360Z\"\n            },\n            {\n                \"_id\": \"6417175cd9902c1c8cc5fe70\",\n                \"name\": \"Pepino\",\n                \"type\": \"Vegetal\",\n                \"price\": 0.49,\n                \"quantity\": 69,\n                \"provider\": \"Frutas do Zé\",\n                \"createdAt\": \"2023-03-19T14:08:28.362Z\"\n            }\n        ],\n        \"quantity\": [\n            8,\n            45,\n            13\n        ],\n        \"price\": 438.74,\n        \"author\": {\n            \"_id\": \"641717113a42c78499b5b711\",\n            \"name\": \"API Teste\",\n            \"email\": \"api@teste.com\",\n            \"status\": \"A\",\n            \"createdAt\": \"2023-03-19T14:07:13.928Z\"\n        },\n        \"customer\": {\n            \"_id\": \"6417175cd9902c1c8cc5fe5a\",\n            \"name\": \"Isis Nicole Rocha\",\n            \"doc\": \"60772392161\",\n            \"status\": \"A\",\n            \"email\": \"isis_rocha@outlook.com.br\",\n            \"phone\": \"1129972625\",\n            \"createdAt\": \"2023-03-19T14:08:28.343Z\"\n        },\n        \"status\": \"released\",\n        \"createdAt\": \"2023-03-19T14:10:37.765Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Find requests by Author",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/request/author/:author",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"request",
+								"author",
+								":author"
+							],
+							"variable": [
+								{
+									"key": "author",
+									"value": "641717113a42c78499b5b711"
+								}
+							]
+						},
+						"description": "This request finds all requests of the specified authors."
+					},
+					"response": [
+						{
+							"name": "Find requests by Author",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/request/author/:author",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"request",
+										"author",
+										":author"
+									],
+									"variable": [
+										{
+											"key": "author",
+											"value": "641717113a42c78499b5b711"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1953"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7a1-V2w0WJX4I9KmdHIChu8024l4kqg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 14:26:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"requests\": [\n        {\n            \"_id\": \"641717dd3087298c80b8529f\",\n            \"cod\": \"TCHdBBPqA\",\n            \"description\": \"Compras na feira\",\n            \"products\": [\n                {\n                    \"_id\": \"6417175cd9902c1c8cc5fe62\",\n                    \"name\": \"Penca de Babana\",\n                    \"type\": \"Frutas\",\n                    \"price\": 3.23,\n                    \"quantity\": 10,\n                    \"provider\": \"Fruteira Chapecó\",\n                    \"createdAt\": \"2023-03-19T14:08:28.350Z\"\n                },\n                {\n                    \"_id\": \"6417175cd9902c1c8cc5fe70\",\n                    \"name\": \"Pepino\",\n                    \"type\": \"Vegetal\",\n                    \"price\": 0.49,\n                    \"quantity\": 69,\n                    \"provider\": \"Frutas do Zé\",\n                    \"createdAt\": \"2023-03-19T14:08:28.362Z\"\n                }\n            ],\n            \"quantity\": [\n                40,\n                21\n            ],\n            \"price\": 294.89,\n            \"author\": {\n                \"_id\": \"641717113a42c78499b5b711\",\n                \"name\": \"API Teste\",\n                \"email\": \"api@teste.com\",\n                \"status\": \"A\",\n                \"createdAt\": \"2023-03-19T14:07:13.928Z\"\n            },\n            \"customer\": {\n                \"_id\": \"6417175cd9902c1c8cc5fe56\",\n                \"name\": \"Geraldo Gustavo Freitas\",\n                \"doc\": \"14712416106\",\n                \"status\": \"A\",\n                \"email\": \"geraldo_gustavo_freitas@lagencemodelos.com.br\",\n                \"phone\": \"6736223977\",\n                \"createdAt\": \"2023-03-19T14:08:28.338Z\"\n            },\n            \"status\": \"released\",\n            \"createdAt\": \"2023-03-19T14:10:37.756Z\"\n        },\n        {\n            \"_id\": \"641717dd3087298c80b852a3\",\n            \"cod\": \"LLO5druiyl\",\n            \"description\": \"Reposição do supermercado\",\n            \"products\": [\n                {\n                    \"_id\": \"6417175cd9902c1c8cc5fe64\",\n                    \"name\": \"Caixa de Maças\",\n                    \"type\": \"Frutas\",\n                    \"price\": 7.89,\n                    \"quantity\": 7,\n                    \"provider\": \"Fruteira Chapecó\",\n                    \"createdAt\": \"2023-03-19T14:08:28.352Z\"\n                },\n                {\n                    \"_id\": \"6417175cd9902c1c8cc5fe6e\",\n                    \"name\": \"Abóbora\",\n                    \"type\": \"Legumes\",\n                    \"price\": 9.99,\n                    \"quantity\": 3,\n                    \"provider\": \"Fruteira Chapecó\",\n                    \"createdAt\": \"2023-03-19T14:08:28.360Z\"\n                },\n                {\n                    \"_id\": \"6417175cd9902c1c8cc5fe70\",\n                    \"name\": \"Pepino\",\n                    \"type\": \"Vegetal\",\n                    \"price\": 0.49,\n                    \"quantity\": 69,\n                    \"provider\": \"Frutas do Zé\",\n                    \"createdAt\": \"2023-03-19T14:08:28.362Z\"\n                }\n            ],\n            \"quantity\": [\n                8,\n                45,\n                13\n            ],\n            \"price\": 438.74,\n            \"author\": {\n                \"_id\": \"641717113a42c78499b5b711\",\n                \"name\": \"API Teste\",\n                \"email\": \"api@teste.com\",\n                \"status\": \"A\",\n                \"createdAt\": \"2023-03-19T14:07:13.928Z\"\n            },\n            \"customer\": {\n                \"_id\": \"6417175cd9902c1c8cc5fe5a\",\n                \"name\": \"Isis Nicole Rocha\",\n                \"doc\": \"60772392161\",\n                \"status\": \"A\",\n                \"email\": \"isis_rocha@outlook.com.br\",\n                \"phone\": \"1129972625\",\n                \"createdAt\": \"2023-03-19T14:08:28.343Z\"\n            },\n            \"status\": \"released\",\n            \"createdAt\": \"2023-03-19T14:10:37.765Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Do a request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"description\": \"Reposição do supermercado\",\r\n\t\"products\": [\"6417175cd9902c1c8cc5fe62\", \"6417175cd9902c1c8cc5fe66\"],\r\n\t\"quantity\": [3, 6],\r\n\t\"customer\": \"6417175cd9902c1c8cc5fe4e\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/request/do",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"request",
+								"do"
+							]
+						},
+						"description": "This request registers a new request at the distributor."
+					},
+					"response": [
+						{
+							"name": "Do a request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"description\": \"Reposição do supermercado\",\r\n\t\"products\": [\"6417175cd9902c1c8cc5fe62\", \"6417175cd9902c1c8cc5fe66\"],\r\n\t\"quantity\": [3, 6],\r\n\t\"customer\": \"6417175cd9902c1c8cc5fe4e\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/request/do",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"request",
+										"do"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-eDhZNxWWYR06/x+slfe/kGOBqSA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 15:34:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The request has been registered.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"author\": \"64171972aa69e2f1d394568b\"\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/request/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"request",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "641717dd3087298c80b8529f"
+								}
+							]
+						},
+						"description": "This request updates an existing request at the distributor."
+					},
+					"response": [
+						{
+							"name": "Update a request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"author\": \"64171972aa69e2f1d394568b\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/request/:id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"request",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "641717dd3087298c80b8529f"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-pd/+sxaQ0S9mdtY7NkKAqpHMY3I\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 15:30:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The request has been updated.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Complete a request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/request/complete/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"request",
+								"complete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "641717dd3087298c80b8529f"
+								}
+							]
+						},
+						"description": "This request updates the status of an existing request to completed at the distributor."
+					},
+					"response": [
+						{
+							"name": "Complete a request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/request/complete/:id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"request",
+										"complete",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "641717dd3087298c80b8529f"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-IoywUwCo3Ib5/EySVDs5+yKrGU4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 15:36:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The request has been completed\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Cancel a request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/request/cancel/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"request",
+								"cancel",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "64172b684d36ec9b4c730536"
+								}
+							]
+						},
+						"description": "This request updates the status of an existing request to canceled at the distributor."
+					},
+					"response": [
+						{
+							"name": "Cancel a request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/request/cancel/:id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"request",
+										"cancel",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "64172b684d36ec9b4c730536"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-NAlpVopxPrH6nDuVVqICfnVDH30\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 15:37:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The request has been canceled\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/request/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"request",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "641717dd3087298c80b8529f"
+								}
+							]
+						},
+						"description": "This request deletes an existing request at the distributor."
+					},
+					"response": [
+						{
+							"name": "Delete a request",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/request/:id",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"request",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "641717dd3087298c80b8529f"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-Uw5PK24gUaFJhwjP8PZzEXZmb7U\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Mar 2023 15:40:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"The request has been deleted.\"\n}"
+						}
+					]
+				}
+			],
+			"description": "In the requests folder there are endpoints to search, register, update and delete the requests registered in the distributor."
+		},
+		{
+			"name": "Start system - Populate",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/api/start",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"start"
+					]
+				},
+				"description": "This request fills the distributor's database with false data."
+			},
+			"response": [
+				{
+					"name": "Start system example",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/start",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"start"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "28"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1c-3gg90KdCFXnGAIJilxZCUeDIb14\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Mar 2023 13:13:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"System started\"\n}"
+				}
+			]
+		}
+	]
+}

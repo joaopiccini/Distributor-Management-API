@@ -19,7 +19,7 @@ class ProductsController {
                     const priceAndQuantityIsValid = productData.price > 0 && productData.quantity >= 0;
                     if (priceAndQuantityIsValid) {
                         await ProductsService.registerProduct(productData);
-                        return res.status(201).json({ message: 'Product registered in database.' });
+                        return res.status(201).json({ message: 'The product has been registered.' });
                     }
                     return res.status(400).json('Product price or quantity is incorrect or not valid.');
                 }
@@ -35,11 +35,11 @@ class ProductsController {
     static async findAllProducts(req, res) {
         try {
             const products = await ProductsService.findAllProducts();
-            const productNotFound = products.length === 0;
-            if (productNotFound) {
+            const productsQuantity = products.length;
+            if (productsQuantity === 0) {
                 return res.status(200).json("There aren't registered products.");
             }
-            return res.status(200).json(products);
+            return res.status(200).json({ products });
         } catch (err) {
             console.log(err);
             return res.status(500).json('Internal Server Error.');
@@ -50,11 +50,11 @@ class ProductsController {
         try {
             const { type } = req.params;
             const products = await ProductsService.findProductsByType(type);
-            const productNotFound = products.length === 0;
-            if (productNotFound) {
+            const productsQuantity = products.length;
+            if (productsQuantity === 0) {
                 return res.status(200).json("There aren't registered products with this type.");
             }
-            return res.status(200).json(products);
+            return res.status(200).json({ products });
         } catch (err) {
             console.log(err);
             return res.status(500).json('Internal Server Error.');
@@ -64,11 +64,11 @@ class ProductsController {
     static async findProductById(req, res) {
         try {
             const { id } = req.params;
-            const productFound = await ProductsService.findProductById(id);
-            if (!productFound) {
+            const product = await ProductsService.findProductById(id);
+            if (!product) {
                 return res.status(200).json("There isn't registered product with this ID.");
             }
-            return res.status(200).json(productFound);
+            return res.status(200).json({ product });
         } catch (err) {
             console.log(err);
             return res.status(500).json('Internal Server Error.');
@@ -84,7 +84,7 @@ class ProductsController {
                 return res.status(200).json("There isn't registered product with this ID.");
             }
             await ProductsService.updateProductById(id, newProductData);
-            return res.status(200).json({ message: 'Product updated in database.' });
+            return res.status(200).json({ message: 'The product has been updated.' });
         } catch (err) {
             console.log(err);
             return res.status(500).json('Internal Server Error.');
@@ -99,7 +99,7 @@ class ProductsController {
                 return res.status(200).json("There isn't registered product with this ID.");
             }
             await ProductsService.deleteProductById(id);
-            return res.status(200).json({ message: 'Product deleted of database.' });
+            return res.status(200).json({ message: 'The product has been deleted.' });
         } catch (err) {
             console.log(err);
             return res.status(500).json('Internal Server Error.');

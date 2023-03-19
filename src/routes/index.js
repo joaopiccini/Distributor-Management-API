@@ -9,11 +9,7 @@ const apiRoutes = require('./apiRoutes')
 module.exports = app => {
 
     app.get('/', (req, res) => {
-        if(req.session){
-            res.render('home');
-        } else {
-            res.render('login');
-        }
+        res.render('login');
     });
     
     app.use(

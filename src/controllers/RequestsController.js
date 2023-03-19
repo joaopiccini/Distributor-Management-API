@@ -44,8 +44,8 @@ class RequestsController {
                                 requestData.price = totalValueOfProducts;
                                 requestData.cod = shortId.generate();
                                 requestData.author = await UsersService.findUserById(idUser);
-                                const request = await RequestsService.doRequest(requestData);
-                                return res.status(201).json({ message: 'Request registered in database.', request });
+                                await RequestsService.doRequest(requestData);
+                                return res.status(201).json({ message: 'The request has been registered.' });
                             }
                             return res.status(200).json("Don't have enough products.");
                         }
@@ -127,8 +127,8 @@ class RequestsController {
             if (!requestFound) {
                 return res.status(200).json("There isn't registered request with this ID.");
             }
-            const update = await RequestsService.updateRequestById(id, newRequestData);
-            return res.status(200).json({ message: 'Request updated in database.', update });
+            await RequestsService.updateRequestById(id, newRequestData);
+            return res.status(200).json({ message: 'The request has been updated.' });
         } catch (err) {
             console.log(err);
             return res.status(500).json('Internal Server Error.');
@@ -179,7 +179,7 @@ class RequestsController {
                 return res.status(200).json("There isn't registered request with this ID.");
             }
             await RequestsService.deleteRequestById(id);
-            return res.status(200).json({ message: 'Product deleted of database.' });
+            return res.status(200).json({ message: 'The request has been deleted.' });
         } catch (err) {
             console.log(err);
             return res.status(500).json('Internal Server Error.');

@@ -10,7 +10,7 @@ db.connect();
 
 routes(app);
 
-app.use('public', express.static('public'));
+app.use('/public', express.static('public'));
 
 app.set('view engine', 'ejs');
 app.set('views', './src/views');

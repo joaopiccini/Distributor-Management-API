@@ -19,7 +19,7 @@ class UsersService {
 
     static async findUserByEmail(email) {
         try {
-            return await User.findOne({ email });
+            return await User.findOne({ email }).select('name').select('email').select('password').select('status');
         } catch (err) {
             if (err.name === 'CastError') {
                 return "There isn't registered user with this Email.";

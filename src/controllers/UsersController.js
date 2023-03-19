@@ -17,14 +17,7 @@ class UsersController {
                 }
                 userData.password = await bcrypt.hash(userData.password, 10);
                 const user = await UsersService.createUser(userData);
-                return res.status(200).json({
-                    message: 'User created',
-                    user: {
-                        name: user.name,
-                        email: user.email,
-                        status: user.status
-                    }
-                });
+                return res.status(200).json({ message: 'User has been created' });
             }
             return res.status(400).json('User data is incorrect or not valid.');
         } catch (err) {
@@ -50,11 +43,11 @@ class UsersController {
     static async findUserById(req, res) {
         try {
             const { id } = req.params;
-            const userExists = await UsersService.findUserById(id);
-            if (!userExists) {
+            const user = await UsersService.findUserById(id);
+            if (!user) {
                 return res.status(200).json("There isn't registered user with this ID.");
             }
-            return res.status(200).json({ userExists });
+            return res.status(200).json({ user });
         } catch (err) {
             console.log(err);
             return res.status(500).json('Internal Server Error.');
@@ -103,11 +96,11 @@ class UsersController {
             const dataLimit = Object.keys(userData).length === 2;
             const userDataIsValid = userData.email && userData.password && dataLimit;
             if (userDataIsValid) {
-                const userExists = await UsersService.findUserByEmail(userData.email);
-                if (userExists && userExists.status === 'A') {
-                    const userAutenticate = await Authentication.AutenticateUser(userData, userExists, res);
+                const user = await UsersService.findUserByEmail(userData.email);
+                if (user && user.status === 'A') {
+                    const userAutenticate = await Authentication.AutenticateUser(userData, user, res);
                     if (userAutenticate) {
-                        return res.status(200).json(userExists);
+                        return res.status(200).json({ message: `User ${user.name} has been connected` });
                     }
                     return res.status(400).json('User data is incorrect or not valid.');
                 }

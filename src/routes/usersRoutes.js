@@ -1,15 +1,16 @@
 /* eslint-disable prettier/prettier */
 const express = require('express');
 const UsersController = require("../controllers/UsersController");
+const Authentication = require('../auth/Authentication');
 
 const router = express.Router();
 
 router
-    .get('/user',UsersController.findAllUsers)
-    .get('/user/:id',UsersController.findUserById)
+    .get('/api/user', Authentication.validateJWT, UsersController.findAllUsers)
+    .get('/api/user/:id',Authentication.validateJWT, UsersController.findUserById)
     .post('/register',UsersController.createUser)
     .post('/login',UsersController.loginUser)
-    .put('/user/inactive/:email',UsersController.inactivateUser)
-    .put('/user/active/:email',UsersController.activateUser)
+    .put('/api/user/inactive/:email',Authentication.validateJWT, UsersController.inactivateUser)
+    .put('/api/user/active/:email',Authentication.validateJWT, UsersController.activateUser)
 
 module.exports = router;
