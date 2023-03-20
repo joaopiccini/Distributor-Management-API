@@ -93,12 +93,13 @@ class UsersController {
     static async loginUser(req, res) {
         try {
             const userData = req.body;
+            console.log(userData);
             const dataLimit = Object.keys(userData).length === 2;
             const userDataIsValid = userData.email && userData.password && dataLimit;
             if (userDataIsValid) {
                 const user = await UsersService.findUserByEmail(userData.email);
                 if (user && user.status === 'A') {
-                    const userAutenticate = await Authentication.AutenticateUser(userData, user, res);
+                    const userAutenticate = await Authentication.autenticateUser(userData, user, res);
                     if (userAutenticate) {
                         return res.status(200).json({ message: `User ${user.name} has been connected` });
                     }

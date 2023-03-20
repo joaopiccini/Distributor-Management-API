@@ -11,11 +11,11 @@
     <div class="box">
       <img src="/public/images/logo.jpg" class="logo">
       <h1 class="title" >Welcome</h1>
-      <form>
+      <form method="post" action="http://localhost:8080/login">
         <label class="labels" for="email">E-mail</label>
-        <input class="email inputs" type="text" placeholder="Enter your e-mail">
+        <input class="email inputs" type="text" name="email" placeholder="Enter your e-mail">
         <label class="labels" for="password">Password</label>
-        <input class="password inputs" type="password" placeholder="Enter your password">
+        <input class="password inputs" type="password" name="password" placeholder="Enter your password">
         <input class="submit" type="submit" value="Log In">
         <a class="text" href="#">Don't have An account?</a>
       </form>

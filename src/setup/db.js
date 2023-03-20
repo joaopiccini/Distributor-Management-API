@@ -3,9 +3,9 @@ require('dotenv/config');
 
 const connect = () => {
     mongoose
-        .connect('mongodb://localhost:27017/distributor')
+        .connect(process.env.MONGO_DB)
         .then(() => {
-            console.log(`Database connected on port: ${process.env.BD_PORT}`);
+            console.log(`Database has been connected`);
         })
         .catch((err) => {
             console.log(`Error on database connect: ${err}`);

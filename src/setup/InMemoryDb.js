@@ -6,17 +6,20 @@ class InMemoryDb {
             {
                 name: 'Joao',
                 email: 'joao@distributor.com',
-                password: 'batata'
+                password: '$2a$10$pQ46VLQknJW1qvWRd8ZTJuKzPyIzHfrq6k91lm67KMgUcJMKG97RW',
+                status: 'A'
             },
             {
                 name: 'Ana',
                 email: 'ana@distributor.com',
-                password: '12345'
+                password: '$2a$10$pQ46VLQknJW1qvWRd8ZTJuKzPyIzHfrq6k91lm67KMgUcJMKG97RW',
+                status: 'A'
             },
             {
                 name: 'Jose',
                 email: 'jose@distributor.com',
-                password: 'senhasecreta'
+                password: '$2a$10$pQ46VLQknJW1qvWRd8ZTJuKzPyIzHfrq6k91lm67KMgUcJMKG97RW',
+                status: 'A'
             }
         ];
 
