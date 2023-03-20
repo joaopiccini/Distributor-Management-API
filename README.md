@@ -1,8 +1,8 @@
 # Distributor Management
 
-An API for managing products and customers of a distributor. You can see all API routes on API Documentation:
+An API for managing products and customers of a distributor. You can see all API routes on:
 
--   https://documenter.getpostman.com/view/26438823/2s93JzMgDt
+-   [API Documentation](https://documenter.getpostman.com/view/26438823/2s93JzMgDt)
 
 ## First steps
 
