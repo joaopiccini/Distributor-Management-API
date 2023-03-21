@@ -1,7 +1,7 @@
 {
   "name": "distributor-product-management",
   "version": "1.0.0",
-  "description": "Software to product and costumers management of a distributor",
+  "description": "An API to product and costumers management of a distributor",
   "main": "index.js",
   "scripts": {
     "test": "jest --verbose",

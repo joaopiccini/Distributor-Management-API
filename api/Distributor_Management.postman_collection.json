@@ -23,7 +23,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"api@teste.com\",\r\n    \"password\": \"123\"\r\n}"
+							"raw": "{\r\n\t\"email\": \"user@email.com\",\r\n\t\"password\": \"password\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/token",
@@ -60,12 +60,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/token",
-									"protocol": "http",
+									"raw": "{{url}}/api/token",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"token"
@@ -123,7 +121,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"claudio@distributor.com\",\r\n    \"password\": \"senhasecreta\"\r\n}"
+							"raw": "{\r\n\t\"email\": \"user@email.com\",\r\n\t\"password\": \"password\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/login",
@@ -159,12 +157,10 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/login",
-									"protocol": "http",
+									"raw": "{{url}}/login",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8080",
 									"path": [
 										"login"
 									]
@@ -260,12 +256,10 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:8080/api/user",
-									"protocol": "http",
+									"raw": "{{url}}/api/user",
 									"host": [
-										"localhost"
+										"{{url}}"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"user"
@@ -421,6 +415,16 @@
 				{
 					"name": "Create a user",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -431,7 +435,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Claudio\",\r\n    \"email\": \"claudio@distributor.com\",\r\n    \"password\": \"senhasecreta\"\r\n}"
+							"raw": "{\r\n\t\"name\": \"User\",\r\n\t\"email\": \"user@email.com\",\r\n\t\"password\": \"password\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/register",
@@ -1075,7 +1079,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Claudio\",\r\n    \"doc\": \"19204468492\",\r\n    \"email\": \"claudio70@gmail.com\",\r\n    \"phone\": \"9338932103\"\r\n}"
+							"raw": "{\r\n\t\"name\": \"User\",\r\n\t\"doc\": \"19204468492\",\r\n\t\"email\": \"user@email.com\",\r\n\t\"phone\": \"9338932103\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/customer/register",
@@ -1185,7 +1189,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"phone\": \"49993283745\"\r\n}"
+							"raw": "{\r\n\t\"phone\": \"49993283745\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/customer/:doc",
@@ -1845,7 +1849,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"name\": \"Abacaxi\",\r\n\t\"type\": \"Frutas\",\r\n\t\"price\": 4.69,\r\n\t\"quantity\": 12,\r\n\t\"provider\": \"Fruteira Chapecó\"\r\n}"
+							"raw": "{\r\n\t\"name\": \"Product\",\r\n\t\"type\": \"Type\",\r\n\t\"price\": 0.0,\r\n\t\"quantity\": 0,\r\n\t\"provider\": \"Provider\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/product/register",
@@ -1955,7 +1959,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"name\": \"Limão\",\r\n\t\"price\": 6.35\r\n}"
+							"raw": "{\r\n\t\"name\": \"Product\",\r\n\t\"price\": 0.0\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/product/:id",
@@ -2613,7 +2617,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"description\": \"Reposição do supermercado\",\r\n\t\"products\": [\"6417175cd9902c1c8cc5fe62\", \"6417175cd9902c1c8cc5fe66\"],\r\n\t\"quantity\": [3, 6],\r\n\t\"customer\": \"6417175cd9902c1c8cc5fe4e\"\r\n}"
+							"raw": "{\r\n\t\"description\": \"Description\",\r\n\t\"products\": [\"ProductId1\", \"ProductId2\"],\r\n\t\"quantity\": [0, 0],\r\n\t\"customer\": \"CustomerId\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/request/do",
@@ -2723,7 +2727,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"author\": \"64171972aa69e2f1d394568b\"\r\n}"
+							"raw": "{\r\n\t\"author\": \"ProductId\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/api/request/:id",
