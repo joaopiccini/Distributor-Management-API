@@ -93,7 +93,6 @@ class UsersController {
     static async loginUser(req, res) {
         try {
             const userData = req.body;
-            console.log(userData);
             const dataLimit = Object.keys(userData).length === 2;
             const userDataIsValid = userData.email && userData.password && dataLimit;
             if (userDataIsValid) {
@@ -101,6 +100,7 @@ class UsersController {
                 if (user && user.status === 'A') {
                     const userAutenticate = await Authentication.autenticateUser(userData, user, res);
                     if (userAutenticate) {
+                        console.log(`User ${user.name} has connected`);
                         return res.status(200).json({ message: `User ${user.name} has been connected` });
                     }
                     return res.status(400).json('User data is incorrect or not valid.');

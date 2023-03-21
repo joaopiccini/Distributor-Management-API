@@ -34,7 +34,7 @@ MONGO_DB = 'mongodb://localhost:27017/distributor';
 With the installations done and the files configured, you can start the application with the command:
 
 ```bash
-npm run start
+npm run server
 ```
 
 If you wish, you can make a request for the start system route to populate the database.

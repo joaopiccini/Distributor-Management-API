@@ -23,13 +23,9 @@ const userSchema = mongoose.Schema(
             type: String,
             required: true,
             default: 'A'
-        },
-        createdAt: {
-            type: Date,
-            default: Date.now
         }
     },
-    { versionKey: false }
+    { versionKey: false, timestamps: true }
 );
 
 const User = mongoose.model('user', userSchema, 'users');

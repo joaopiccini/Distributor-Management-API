@@ -24,13 +24,9 @@ const productSchema = mongoose.Schema(
             type: String,
             required: true,
             default: 'System'
-        },
-        createdAt: {
-            type: Date,
-            default: Date.now
         }
     },
-    { versionKey: false }
+    { versionKey: false, timestamps: true }
 );
 
 const Product = mongoose.model('product', productSchema, 'products');

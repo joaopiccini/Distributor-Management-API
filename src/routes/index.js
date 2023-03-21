@@ -9,7 +9,7 @@ const apiRoutes = require('./apiRoutes')
 module.exports = app => {
 
     app.get('/', (req, res) => {
-        res.render('login');
+        res.render('index');
     });
     
     app.use(

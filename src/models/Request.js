@@ -43,13 +43,9 @@ const requestSchema = mongoose.Schema(
             type: String,
             required: true,
             default: 'released'
-        },
-        createdAt: {
-            type: Date,
-            default: Date.now
         }
     },
-    { versionKey: false }
+    { versionKey: false, timestamps: true }
 );
 
 const Request = mongoose.model('request', requestSchema, 'requests');

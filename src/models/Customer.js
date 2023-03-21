@@ -23,13 +23,9 @@ const customerSchema = mongoose.Schema(
         },
         phone: {
             type: String
-        },
-        createdAt: {
-            type: Date,
-            default: Date.now
         }
     },
-    { versionKey: false }
+    { versionKey: false, timestamps: true }
 );
 
 const Customer = mongoose.model('customer', customerSchema, 'customers');
