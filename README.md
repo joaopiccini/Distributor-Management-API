@@ -45,6 +45,13 @@ You can also check the unit tests already performed in the application using the
 npm run test
 ```
 
+### Next steps
+
+The next planned changes are:
+
+-   Validation of all parameters received by the API;
+-   Generate tests of all classes;
+
 ### Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
